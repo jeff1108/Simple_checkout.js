@@ -21,7 +21,7 @@ describe('Checkout', () => {
 
     it('can scan all items and price into checkout baskets', () => {
       checkout.buy('pizza')
-      expect(checkout.baskets()).toEqual(['pizza']);
+      expect(checkout.baskets()).toEqual([{item: 'pizza', item_price: 2}]);
     });
   });
 

@@ -13,12 +13,17 @@ Checkout.prototype.baskets = function () {
 }
 
 Checkout.prototype.buy = function (item) {
-  this.checkout_baskets.push(item)
+  var item_price = this.products[item]
+  this.checkout_baskets.push({item, item_price})
 }
 
 Checkout.prototype.total_price = function () {
-  for(var i in this.checkout_baskets) {
-    this.baskets_value += this.products[this.checkout_baskets[i]]
+  // for(var i in this.checkout_baskets) {
+  //   this.baskets_value += this.products[this.checkout_baskets[i]]
+  // }
+  // return "£" + this.baskets_value + ".00";
+  for( var i = 0; i < this.checkout_baskets.length; i++) {
+    this.baskets_value += this.checkout_baskets[i]['item_price']
   }
-  return "£" + this.baskets_value + ".00";
+  return "£" + this.baskets_value + ".00"
 }
